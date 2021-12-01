@@ -1,6 +1,0 @@
-Katze
-Hund
-Pferd
-Maus
-Elefant
-Okapi

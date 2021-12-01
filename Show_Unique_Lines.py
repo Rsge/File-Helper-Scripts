@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# Imports
 from glob import glob as g
 
 # Variables
