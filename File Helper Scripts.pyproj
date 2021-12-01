@@ -24,6 +24,7 @@
     <Compile Include="Show_Unique_Lines.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
   </ItemGroup>
