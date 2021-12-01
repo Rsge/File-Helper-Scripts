@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
 
-# Variables
-input_file = "example.txt"
-output_ext = "_u"
+from glob import glob as g
 
+# Variables
+output_ext = "_u"
 uniques = []
+
+# Get file
+while True:
+	input_file_name = input("\nWhich file should be processed?\n")
+	input_file = g(input_file_name)
+	if len(input_file) > 0:
+	    input_file = input_file[0]
+	    break
+	print("This file doesn't exist, try again.")
 
 # Read lines
 with open(input_file, "r") as f:
