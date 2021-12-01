@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 # Variables
 input_file = "example.txt"
 output_ext = "_u"
@@ -19,3 +18,7 @@ for line in lines:
 # Write lines
 with open("{0}_{2}.{1}".format(*input_file.rsplit('.', 1) + [output_ext]), "w") as f:
     f.writelines(uniques)
+
+print("Done.\n")
+input("Press Enter to exit. . .")
+exit(0)
