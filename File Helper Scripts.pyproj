@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f80b2039-1847-4a69-ab5b-4da169d35125</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Show_Unique_Lines.py</StartupFile>
+    <StartupFile>show_unique_lines.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Show_Unique_Lines.py" />
+    <Compile Include="show_unique_lines.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
