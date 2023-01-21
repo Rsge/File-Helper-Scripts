@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f80b2039-1847-4a69-ab5b-4da169d35125</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>show_unique_lines.py</StartupFile>
+    <StartupFile>RenameInvoicePDFs.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,12 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="show_unique_lines.py" />
+    <Compile Include="ListFiles.py" />
+    <Compile Include="RenameInvoicePDFs.py" />
+    <Compile Include="ShowUniqueLines.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="Backup.bat" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
+    <Content Include="Rename.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
