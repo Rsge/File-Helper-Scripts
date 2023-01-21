@@ -33,6 +33,10 @@ LANG = "en_US"
 files = g(j(FILES_PATH, "*" + FILE_EXT))
 i = 1
 
+# Get iso date string from match
+def get_date_str(str, format):
+    return dt.strptime(str, format).date().isoformat()
+
 
 # Iterate through all PDFs, search for relevant patterns and rename accordingly
 print(STARTING_MSG)
@@ -46,19 +50,19 @@ for f in files:
     #print(pdf_txt + "\n\n")
     locale.setlocale(locale.LC_ALL, LANG)
     # Get date
+    date_str = ""
     m = re.search(DATE_REGEX, pdf_txt)
     if m is not None:
         date_match = m.group(0).replace(" ", ".").replace("..", ".")
         try:
-            date_dt = dt.strptime(date_match, DATE_FORMAT_LONG)
+            date_str = get_date_str(date_match, DATE_FORMAT_LONG)
         except ValueError:
             try: 
-                date_dt = dt.strptime(date_match, DATE_FORMAT_SHORT)
+                date_str = get_date_str(date_match, DATE_FORMAT_SHORT)
             except:
-                date_dt = dt(0,0,0)
-        date_str = date_dt.date().isoformat()
-    else:
-        date_str = ""
+                pass
+            except:
+            pass
     m = re.search(TYPE_EXT_REGEX, pdf_txt)
     if m is not None:
         type_ext = m.group(1).capitalize()
