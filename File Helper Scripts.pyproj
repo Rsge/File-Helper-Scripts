@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f80b2039-1847-4a69-ab5b-4da169d35125</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>RenameInvoicePDFs.py</StartupFile>
+    <StartupFile>rename_invoice_pdfs.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,16 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ListFiles.py" />
-    <Compile Include="RenameInvoicePDFs.py" />
-    <Compile Include="ShowUniqueLines.py" />
+    <Compile Include="change_last_changed_date.py" />
+    <Compile Include="list_files.py" />
+    <Compile Include="rename_invoice_pdfs.py" />
+    <Compile Include="show_pdf_text.py" />
+    <Compile Include="show_unique_lines.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="Backup.bat" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
-    <Content Include="Rename.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

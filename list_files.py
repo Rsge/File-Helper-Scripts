@@ -9,6 +9,7 @@ from glob import glob as g
 from os.path import join as j
 from os.path import basename as b
 
+
 # String constants
 PATH_QUESTION = "Where should the files be listed?\n"
 EXTENSION_QUESTION = "File extension? (* for all)\n"
@@ -19,6 +20,7 @@ CLOSING_MSG = "\nDone.\nPress Enter to close. . ."
 path = input(PATH_QUESTION)
 ext = input(EXTENSION_QUESTION)
 names = []
+
 
 # Find all files with given extension write into console and log file
 files = g(j(path, "**", "*." + ext), recursive=True)

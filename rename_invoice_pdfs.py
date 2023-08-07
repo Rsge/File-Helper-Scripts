@@ -16,9 +16,11 @@ import re
 
 
 # Constants
+PATH_QUESTION = "Where are the files to rename? (Default: Downloads)\n"
+PATH_ERROR = "The input isn't an existing directory. Please input a valid path or nothing to use Downloads.\n"
 STARTING_MSG = "Renaming files...\n"
 CLOSING_MSG = "\nDone.\nPlease check naming for accuracy. . .\nPress Enter to close. . ."
-FILES_PATH = os.environ['USERPROFILE'] + r"\Downloads"
+DEFAULT_FILES_PATH = os.environ['USERPROFILE'] + r"\Downloads"
 FILE_EXT = ".pdf"
 TYPE_STR = "Store"
 TYPE_EXT_REGEX = "Sold? (?:by:|by) (\w+)"
@@ -30,13 +32,21 @@ SEC_SEP = ", "
 LANG = "en_US"
 
 # Variables
-files = g(j(FILES_PATH, "*" + FILE_EXT))
+while True:
+    path = input(PATH_QUESTION)
+    if os.path.isdir(path):
+        break
+    elif path == "":
+        path = DEFAULT_FILES_PATH
+        break
+    print(PATH_ERROR)
+files = g(j(path, "*" + FILE_EXT))
 i = 1
+
 
 # Get iso date string from match
 def get_date_str(str, format):
     return dt.strptime(str, format).date().isoformat()
-
 
 # Iterate through all PDFs, search for relevant patterns and rename accordingly
 print(STARTING_MSG)
@@ -61,8 +71,6 @@ for f in files:
                 date_str = get_date_str(date_match, DATE_FORMAT_SHORT)
             except:
                 pass
-            except:
-            pass
     m = re.search(TYPE_EXT_REGEX, pdf_txt)
     if m is not None:
         type_ext = m.group(1).capitalize()
