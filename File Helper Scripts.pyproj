@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="change_last_changed_date.py" />
+    <Compile Include="change_modified_date.py" />
     <Compile Include="list_files.py" />
     <Compile Include="rename_invoice_pdfs.py" />
     <Compile Include="show_pdf_text.py" />
@@ -31,6 +31,7 @@
     <Content Include=".gitignore" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
+    <Content Include="SortOutRename.cmd" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
