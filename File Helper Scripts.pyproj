@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f80b2039-1847-4a69-ab5b-4da169d35125</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>rename_invoice_pdfs.py</StartupFile>
+    <StartupFile>iphone_photo_sortout.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="iphone_photo_sortout.py" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
     <Content Include="SortOutRename.cmd" />
