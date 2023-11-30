@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-"""
-Outputs all unique lines of a text file in order of occurence, skipping duplicates.
-"""
+"""Outputs all unique lines of a text file in order of occurence, skipping duplicates."""
 
 # Imports
 from tkinter import filedialog as fd

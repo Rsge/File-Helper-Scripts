@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-"""
-Renames invoice PDFs according to their content.
-"""
+"""Renames invoice PDFs according to their content."""
 
 # Imports
 from glob import glob as g

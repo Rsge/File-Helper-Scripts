@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-"""
-Lists all files in a directory and all it's subdirectories into a text file.
-"""
+"""Lists all files in a directory and all it's subdirectories into a text file."""
 
 # Imports
 from glob import glob as g

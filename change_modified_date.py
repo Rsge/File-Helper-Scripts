@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """Sets the Modified Date of a file to a specified date."""
 
 # Imports
@@ -11,6 +12,7 @@ DATE_QUESTION = "What date and time do you want to set the Modified Date to?\n(F
 DATE_ERROR_MSG = "The input wasn't recognized as a date. Please try again.\n"
 REPEAT_QUESTION = "Done.\n\nTo do another batch, press Enter. . ."
 DATE_FORMAT = "%Y-%m-%d %H:%M"
+
 
 while True:
     # Get files to change.

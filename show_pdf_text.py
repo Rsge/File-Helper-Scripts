@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """Shows all text contained in a PDF."""
 
 # Imports
