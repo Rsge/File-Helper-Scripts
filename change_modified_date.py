@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """Sets the Modified Date of a file to a specified date."""
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """Outputs all unique lines of a text file in order of occurence, skipping duplicates."""
 

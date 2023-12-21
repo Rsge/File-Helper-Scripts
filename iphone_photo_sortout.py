@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """Removes .AAE and their original .JPG/.PNG files, keeping only modified and unedited files, from photos & videos imported from an iOS device."""
 

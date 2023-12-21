@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """Lists all files in a directory and all it's subdirectories into a text file."""
 
