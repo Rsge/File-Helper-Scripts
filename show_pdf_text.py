@@ -6,7 +6,6 @@
 from tkinter import filedialog as fd
 from pypdf import PdfReader as pdfr
 
-
 # Constants
 CLOSING_MSG = "\n\n\nPress Enter to close. . ."
 

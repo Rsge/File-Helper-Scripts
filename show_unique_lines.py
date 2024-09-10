@@ -5,7 +5,6 @@
 # Imports
 from tkinter import filedialog as fd
 
-
 # Constants
 OUTPUT_EXT = "_u"
 CLOSING_MSG = "Done.\nPress Enter to close. . ."

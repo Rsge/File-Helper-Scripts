@@ -8,7 +8,7 @@ from datetime import datetime as dt
 from os import utime
 
 # String constants
-IMPORT_ERROR = "Error: Module \"pywin32\" not installed.\nInstall using \"pip install pywin32\" in console."
+IMPORT_ERROR = "Error: Module \"{0}\" not installed.\nInstall using \"pip install {0}\" in console."
 DATE_QUESTION = "What date and time do you want to set the Created Date to?\n(Format: yyyy-mm-dd HH:MM)\n"
 DATE_ERROR_MSG = "The input wasn't recognized as a date. Please try again.\n"
 REPEAT_QUESTION = "Done.\n\nTo do another batch, press Enter. . ."
@@ -18,10 +18,11 @@ DATE_FORMAT = "%Y-%m-%d %H:%M"
 try:
     import pywintypes, win32file, win32con
 except ModuleNotFoundError:
-    input(IMPORT_ERROR)
+    input(IMPORT_ERROR.format("pywin32"))
     exit(1)
 
-# Function def
+
+# Defs
 def change_file_creation_time(fname, newtime):
     wintime = pywintypes.Time(newtime)
     winfile = win32file.CreateFile(
@@ -32,6 +33,8 @@ def change_file_creation_time(fname, newtime):
     win32file.SetFileTime(winfile, wintime, None, None)
     winfile.close()
 
+
+# Main
 while True:
     # Get files to change.
     files = fd.askopenfilenames()

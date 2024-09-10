@@ -17,6 +17,7 @@ DEL_WARN = "These files and their {} files will be deleted. Delete? (Y/n)".forma
 CLOSING_MSG = "\nDone.\nPress Enter to close. . ."
 
 
+# Main
 while True:
     # Get directory to process.
     path = fd.askdirectory()

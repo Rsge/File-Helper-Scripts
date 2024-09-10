@@ -14,6 +14,7 @@ REPEAT_QUESTION = "Done.\n\nTo do another batch, press Enter. . ."
 DATE_FORMAT = "%Y-%m-%d %H:%M"
 
 
+# Main
 while True:
     # Get files to change.
     files = fd.askopenfilenames()

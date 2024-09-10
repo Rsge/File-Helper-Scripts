@@ -3,25 +3,24 @@
 """Renames invoice PDFs according to their content."""
 
 # Imports
+from tkinter import filedialog as fd
 from glob import glob as g
 from os.path import join as j
-from pypdf import PdfReader as pdfr
 from datetime import datetime as dt
 from os import rename as rn
 import locale
 import os
 import re
 
-
 # Constants
+IMPORT_ERROR = "Error: Module \"{0}\" not installed.\nInstall using \"pip install {0}\" in console."
 PATH_QUESTION = "Where are the files to rename? (Default: Downloads)\n"
-PATH_ERROR = "The input isn't an existing directory. Please input a valid path or nothing to use Downloads.\n"
 STARTING_MSG = "Renaming files...\n"
 CLOSING_MSG = "\nDone.\nPlease check naming for accuracy. . .\nPress Enter to close. . ."
 DEFAULT_FILES_PATH = os.environ['USERPROFILE'] + r"\Downloads"
 FILE_EXT = ".pdf"
 TYPE_STR = "Store"
-TYPE_EXT_REGEX = "Sold? (?:by:|by) (\w+)"
+TYPE_EXT_REGEX = r"Sold? (?:by:|by) (\w+)"
 DATE_REGEX = r"(?<!Ordering date )\d{2}(?:\.? [^\W\d_]+ |\.\d{2}\.)\d{4}"
 DATE_FORMAT_LONG = "%B %d. %Y"
 DATE_FORMAT_SHORT = "%m/%d/%Y"
@@ -29,24 +28,25 @@ MAIN_SEP = " - "
 SEC_SEP = ", "
 LANG = "en_US"
 
-# Variables
-while True:
-    path = input(PATH_QUESTION)
-    if os.path.isdir(path):
-        break
-    elif path == "":
-        path = DEFAULT_FILES_PATH
-        break
-    print(PATH_ERROR)
-files = g(j(path, "*" + FILE_EXT))
-i = 1
+# Import non-default package.
+try:
+    from pypdf import PdfReader as pdfr
+except ModuleNotFoundError:
+    input(IMPORT_ERROR.format("pypdf"))
+    exit(1)
 
 
 # Get iso date string from match
 def get_date_str(str, format):
     return dt.strptime(str, format).date().isoformat()
 
-# Iterate through all PDFs, search for relevant patterns and rename accordingly
+
+# Main
+path = fd.askdirectory(initialdir=DEFAULT_FILES_PATH)
+if len(path) == 0:
+    exit()
+files = g(j(path, "*" + FILE_EXT))
+i = 1
 print(STARTING_MSG)
 for f in files:
     name = os.path.basename(f)
