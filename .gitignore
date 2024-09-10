@@ -5,6 +5,7 @@
 
 # Custom
 *.txt
+*.exe
 
 # User-specific files
 *.rsuser
