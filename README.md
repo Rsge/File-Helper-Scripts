@@ -5,7 +5,7 @@ Small scripts to help with various different file related tasks.
 * `change_created_date.py` changes the Created Date of the chosen file(s) to a specified date and time. (**Windows only**)
 * `change_modified_date.py` changes the Modified Date of the chosen file(s) to a specified date and time.
 * `iphone_photo_sortout.py` removes .AAE and their original .JPG/.PNG files from photos & videos imported from an iOS device, keeping only modified and unedited files.
-* `iPhonePhotoSortOutCompiler.cmd` uses `PythonFileCompiler.cmd` to create a .exe of the above Python script to give users without a Python installation. (**Windows only**)
+* `iPhonePhotoSortOutCompiler.cmd` uses `PythonFileCompiler.cmd` to create a .exe of the above Python script to enable users without a Python installation to run it. (**Windows only**)
 * `list_files.py` lists all files' unique names in a directory and all it's subdirectories into a text file.
 * `PingTest.cmd` tries all combinations of IPs in 192.168.X.X and prints those where an answer is gotten.
 * `PythonFileCompiler.cmd` takes 3 arguments, .py file name, .exe file name and path, and creates a .exe file from a Python script file using `pyinstaller`. (`pip install pyinstaller`) (**Windows only**)
