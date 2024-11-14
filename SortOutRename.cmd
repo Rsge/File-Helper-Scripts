@@ -1,14 +1,15 @@
 @echo off
-pushd %~d0
-for /D %%i in  (*) do (
-	pushd %%i
-	mkdir "!"
-	move "!*" "!"
-	pushd !
-		ren "!*.*" "//*.*"
+pushd %~d0 && (
+	for /d %%i in  (*) do (
+		pushd %%i
+		mkdir "!"
+		move "!*" "!"
+		pushd !
+			ren "!*.*" "//*.*"
+			popd
 		popd
+	)
 	popd
 )
-popd
 pause
 exit

@@ -1,20 +1,21 @@
 @echo off
-set s=%~1
-set en=%~2
-set e=%en%.exe
-set p=%~3
+setlocal
+set scriptName=%~1
+set exeName=%~2
+set exeFile=%exeName%.exe
+set path=%~3
 
 echo Compiling exe file. . .
 echo.
-pyinstaller.exe --onefile "%p%\%s%.py"
+pyinstaller.exe --onefile "%path%\%scriptName%.py"
 echo.
 robocopy dist . * /MOV
-if exist %e% del %e%
-ren "%s%.exe" "%e%"
+if exist %exeFile% del %exeFile%
+ren "%scriptName%.exe" "%exeFile%"
 echo Compilation finished.
 echo.
 echo Deleting build files. . .
-del /q %s%.spec
+del /q %scriptName%.spec
 rd /s /q build
 rd /q dist
 echo Cleanup finished.
