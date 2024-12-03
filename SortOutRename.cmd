@@ -12,4 +12,4 @@ pushd %~d0 && (
 	popd
 )
 pause
-exit
+exit /b
