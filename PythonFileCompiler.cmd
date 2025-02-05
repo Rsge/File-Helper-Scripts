@@ -3,11 +3,11 @@ setlocal
 set scriptName=%~1
 set exeName=%~2
 set exeFile=%exeName%.exe
-set path=%~3
+set pathToScript=%~3
 
 echo Compiling exe file. . .
 echo.
-pyinstaller.exe --onefile "%path%\%scriptName%.py"
+pyinstaller.exe --onefile "%pathToScript%\%scriptName%.py"
 echo.
 robocopy dist . * /MOV
 if exist %exeFile% del %exeFile%
