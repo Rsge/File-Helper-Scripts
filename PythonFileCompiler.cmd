@@ -22,4 +22,4 @@ echo Cleanup finished.
 echo.
 echo Exe file can now be used.
 pause
-exit /b
+exit
