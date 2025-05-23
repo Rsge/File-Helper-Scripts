@@ -10,7 +10,7 @@ echo.
 pyinstaller.exe --onefile "%pathToScript%\%scriptName%.py"
 echo.
 robocopy dist . * /MOV
-if exist %exeFile% del %exeFile%
+if exist "%exeFile%" del "%exeFile%"
 ren "%scriptName%.exe" "%exeFile%"
 echo Compilation finished.
 echo.
