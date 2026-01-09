@@ -29,7 +29,6 @@ for /f "tokens=*" %%p in ('dir /a:d-s /b "%usersPath%*"') do (
 			rem Create an empty temporary file.
 			set temp_file=!profilePath!\prefs_temp.js
 			type nul > "!temp_file!"
-			pause
 			rem Loop through the lines in the file.
 			rem Append each line to the temp file.
 			for /f "usebackq delims=" %%a in ("!prefsFile!") do (
@@ -44,7 +43,6 @@ for /f "tokens=*" %%p in ('dir /a:d-s /b "%usersPath%*"') do (
 					echo !line!
 				)
 			) >> "!temp_file!"
-			pause
 			rem Replace the original file with the temp file.
 			move /y "!temp_file!" "!prefsFile!" >nul
 			echo Update complete.
