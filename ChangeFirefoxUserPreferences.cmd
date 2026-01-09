@@ -1,14 +1,18 @@
 @echo off
 setlocal enabledelayedexpansion
 
-rem Define the target lines to replace.
+rem Define the lines to replace.
 set targetLine1-1=user_pref^(^"browser.newtabpage.activity-stream.newtabWallpapers.wallpaper^", ^"abstract-orange^"^);
 set targetLine1-2=user_pref^(^"browser.newtabpage.activity-stream.newtabWallpapers.wallpaper^", ^"^"^);
 set changedLine1=user_pref^(^"browser.newtabpage.activity-stream.newtabWallpapers.wallpaper^", ^"firefox-a^"^);
 set targetLine2=user_pref^(^"browser.ml.chat.provider^", ^"^"^);
+rem The following line will be inserted at the end if the target line isn't found.
 set changedLine2=user_pref^(^"browser.ml.chat.provider^", ^"https://chat.mistral.ai/chat^"^);
+
+rem Base constants
 set usersPath=C:\Users\
 set firefoxSubpath=AppData\Roaming\Mozilla\Firefox\Profiles
+set prefFileName=prefs.js
 
 rem If Firefox is open, close the script.
 tasklist | find "firefox.exe" >nul && (
@@ -21,14 +25,15 @@ for /f "tokens=*" %%p in ('dir /a:d-s /b "%usersPath%*"') do (
 	rem Loop through each folder in the profiles directory.
 	for /d %%d in ("!userPath!\%firefoxSubpath%\*.default-release") do (
 		set profilePath=%%d
-		set prefsFile=!profilePath!\prefs.js
+		set prefsFile=!profilePath!\%prefFileName%
 		rem Check if prefs.js exists.
 		if exist "!prefsFile!" (
 			echo Found profile: !profilePath!
 			echo Updating prefs.js...
+			set setting2Found=0
 			rem Create an empty temporary file.
-			set temp_file=!profilePath!\prefs_temp.js
-			type nul > "!temp_file!"
+			set tempFile=!profilePath!\%prefFileName%.tmp
+			type nul > "!tempFile!"
 			rem Loop through the lines in the file.
 			rem Append each line to the temp file.
 			for /f "usebackq delims=" %%a in ("!prefsFile!") do (
@@ -39,12 +44,16 @@ for /f "tokens=*" %%p in ('dir /a:d-s /b "%usersPath%*"') do (
 					echo !changedLine1!
 				) else if "!line!"=="%targetLine2%" (
 					echo !changedLine2!
+					set setting2Found=1
 				) else (
 					echo !line!
 				)
-			) >> "!temp_file!"
+			) >> "!tempFile!"
+			if !setting2Found!==0 (
+				echo !changedLine2! >> "!tempFile!"
+			)
 			rem Replace the original file with the temp file.
-			move /y "!temp_file!" "!prefsFile!" >nul
+			move /y "!tempFile!" "!prefsFile!" >nul
 			echo Update complete.
 		)
 	)
