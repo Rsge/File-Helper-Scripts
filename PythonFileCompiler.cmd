@@ -6,20 +6,20 @@ set exeFile=%exeName%.exe
 set pathToScript=%~3
 
 echo Compiling exe file. . .
-echo.
+echo/
 pyinstaller.exe --onefile "%pathToScript%\%scriptName%.py"
-echo.
+echo/
 robocopy dist . * /MOV
 if exist "%exeFile%" del "%exeFile%"
 ren "%scriptName%.exe" "%exeFile%"
 echo Compilation finished.
-echo.
+echo/
 echo Deleting build files. . .
 del /q %scriptName%.spec
 rd /s /q build
 rd /q dist
 echo Cleanup finished.
-echo.
+echo/
 echo Exe file can now be used.
 pause
 exit
