@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """Sets the Created Date of a file to a specified date."""
 
 # Imports
