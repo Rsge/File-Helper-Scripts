@@ -13,6 +13,7 @@ All CMD files only work on Windows, of course.
 * `PingTest.cmd` tries all combinations of IPs in 192.168.X.X and prints those where an answer is gotten.
 * `PythonFileCompiler.cmd` takes 3 arguments, .py file name, .exe file name and path, and creates a .exe file from a Python script file using `pyinstaller`. (`pip install pyinstaller`)
 * `rename_invoice_pdfs.py` renames PDFs of invoices in a directory according to their content.
+* `ReplaceDesktopFirefoxExeWithShortcut.cmd` replaces the new .exe file of Firefox on the desktop for all users by a normal shortcut on the public desktop.
 * `show_pdf_text.py` shows all text found in a PDF file. Useful e.g. for OCRd PDFs to find problems.
 * `show_unique_lines.py` gets all unique lines in a specified text file and outputs them in a new file.
 * `SortOutRename.cmd` sorts all files prepended with an "!" in all subdirectories of it's path into "!" subdirs of those dirs and removes the "!" from the file name.
