@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Brute-forces a MS Office document password."""
+"""Brute-forces a MS Office document password. False positives are possible, just continue with the given option in that case."""
 
 # Imports
 from enum import Enum
@@ -74,11 +74,12 @@ while True:
 start_at = input(START_WHERE_QUESTION)
 
 # Decrypt helper function.
-def decryptDoc(pw):
+decrypted = io.BytesIO()
+def decryptDoc(of, pw):
     print("Trying " + pw, end="… ")
     try:
-        office_file.load_key(password=pw)
-        office_file.decrypt(decrypted)
+        of.load_key(password=pw)
+        of.decrypt(decrypted)
     except:
         print("Fail.")
         return False
@@ -86,42 +87,41 @@ def decryptDoc(pw):
     return True
 
 # Try passwords.
-decrypted = io.BytesIO()
 found = False
 with open(file_path, 'rb') as f:
     office_file = msoffcrypto.OfficeFile(f)
     if mode == Mode.LIST:
         with open(word_list, 'r') as wl:
-            pws = [line.strip() for line in wl]
-        for pw in pws:
-            if len(pw) >= min_len and pw >= start_at:
-                if decryptDoc(pw):
+            pwds = [line.strip() for line in wl]
+        for pwd in pwds:
+            if len(pwd) >= min_len and pwd >= start_at:
+                if decryptDoc(office_file, pwd):
                     found = True
                     break
     else:
         i = min_len
         while not found:
-            for pwl in product(symbols, repeat=i):
-                pw = "".join(pwl)
+            for pwdl in product(symbols, repeat=i):
+                pwd = "".join(pwdl)
                 if mode == Mode.NAME:
-                    pw = pw.capitalize()
-                if pw < start_at:
+                    pwd = pwd.capitalize()
+                if pwd < start_at:
                     continue
-                if decryptDoc(pw):
+                if decryptDoc(office_file, pwd):
                     found = True
                     break
             if mode == Mode.LC_NAME and i > 0:
-                for pwl in product(symbols, repeat=i):
-                    pw = "".join(pwl)
-                    pw = pw.capitalize()
-                    if pw < start_at:
+                for pwdl in product(symbols, repeat=i):
+                    pwd = "".join(pwdl)
+                    pwd = pwd.capitalize()
+                    if pwd < start_at:
                         continue
-                    if decryptDoc(pw):
+                    if decryptDoc(office_file, pwd):
                         found = True
                         break
             i += 1
 if found:
-    print(f"\nThe password for {bn(file_path)} is: {pw}")
+    print(f"\nThe password for \"{bn(file_path)}\" could be: {pwd}")
 else:
-    print("\nPassword could not be found.")
+    print("\nPassword could not be found in the list.")
 input(CLOSING_MSG)
