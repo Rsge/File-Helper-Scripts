@@ -7,6 +7,7 @@ All CMD files only work on Windows, of course.
 * `change_created_date.py` changes the Created Date of the chosen file(s) to a specified date and time. (**Windows only**)
 * `change_modified_date.py` changes the Modified Date of the chosen file(s) to a specified date and time.
 * `filter_iphone_photos.py` removes .AAE and their original .JPG/.PNG files from photos & videos imported from an iOS device, keeping only modified and unedited files.
+* `find_password_office.py` brute-force tries passwords with various options to open a MS Office document. **This shall only be used if you have the express permission of the owner!  Otherwise, using it is illegal under most jurisdictions!** It’s very slow and a bit limited anyway, so is only really useful for easy one-word passwords you already have a basic idea of what they are and have just forgotten the exact word.
 * `ChangeFirefoxUserPreferences.cmd` changes some Firefox user preferences of all users from something to something else, all specified at the top of the script, if Firefox is not currently running.
 * `iPhonePhotoFiltererCompiler.cmd` uses `PythonFileCompiler.cmd` to create a .exe of the above Python script to enable users without a Python installation to run it.
 * `list_files.py` lists all files' unique names in a directory and all it's subdirectories into a text file.
